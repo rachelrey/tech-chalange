@@ -1,0 +1,53 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+                name="viewModel"
+                type="com.example.myassignment.presentation.InfoViewModel"/>
+    </data>
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="5dp">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+            <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:mutableText="@{viewModel.getInfoTitle()}"
+                    android:visibility="@{viewModel.getInfoTitle() == null ? View.GONE : View.VISIBLE}"
+                    android:textSize="20sp"/>
+
+            <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:imageUrl="@{viewModel.getInfoImageHref()}"
+                    android:visibility="@{viewModel.getInfoImageHref() == null ? View.GONE : View.VISIBLE}"/>
+
+            <TextView
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:mutableText="@{viewModel.getInfoDescription()}"
+                    android:visibility="@{viewModel.getInfoDescription() == null ? View.GONE : View.VISIBLE}"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>
